@@ -20,7 +20,8 @@ if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
 
 if(!file_exists(__DIR__ . "/storage/installed"))
 {
-    require_once __DIR__ . '/verification.php';
+    require_once __DIR__ . '/public/index.php';
+//    require_once __DIR__ . '/verification.php';
 }
 else
 {

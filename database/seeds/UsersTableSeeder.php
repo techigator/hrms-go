@@ -253,13 +253,12 @@ class UsersTableSeeder extends Seeder
             "Delete Training Type",
             "Manage Report",
         ];
-        foreach($arrPermissions as $ap)
-        {
+        foreach ($arrPermissions as $ap) {
             Permission::create(['name' => $ap]);
         }
 
         // Super admin
-        $superAdminRole        = Role::create(
+        $superAdminRole = Role::create(
             [
                 'name' => 'super admin',
                 'created_by' => 0,
@@ -287,8 +286,7 @@ class UsersTableSeeder extends Seeder
             'delete coupon',
         ];
 
-        foreach($superAdminPermissions as $ap)
-        {
+        foreach ($superAdminPermissions as $ap) {
             $permission = Permission::findByName($ap);
             $superAdminRole->givePermissionTo($permission);
         }
@@ -306,7 +304,7 @@ class UsersTableSeeder extends Seeder
         $superAdmin->assignRole($superAdminRole);
 
         // company
-        $companyRole        = Role::create(
+        $companyRole = Role::create(
             [
                 'name' => 'company',
                 'created_by' => $superAdmin->id,
@@ -549,8 +547,7 @@ class UsersTableSeeder extends Seeder
             "Manage Report",
         ];
 
-        foreach($companyPermissions as $ap)
-        {
+        foreach ($companyPermissions as $ap) {
             $permission = Permission::findByName($ap);
             $companyRole->givePermissionTo($permission);
         }
@@ -570,7 +567,7 @@ class UsersTableSeeder extends Seeder
 
 
         // HR
-        $hrRole       = Role::create(
+        $hrRole = Role::create(
             [
                 'name' => 'hr',
                 'created_by' => $company->id,
@@ -761,8 +758,7 @@ class UsersTableSeeder extends Seeder
             "Delete Training Type",
         ];
 
-        foreach($hrPermission as $ap)
-        {
+        foreach ($hrPermission as $ap) {
             $permission = Permission::findByName($ap);
             $hrRole->givePermissionTo($permission);
         }
@@ -781,7 +777,7 @@ class UsersTableSeeder extends Seeder
         $hr->assignRole($hrRole);
 
         //Employee
-        $employeeRole       = Role::create(
+        $employeeRole = Role::create(
             [
                 'name' => 'employee',
                 'created_by' => $company->id,
@@ -829,8 +825,7 @@ class UsersTableSeeder extends Seeder
             'Manage Document',
         ];
 
-        foreach($employeePermission as $ap)
-        {
+        foreach ($employeePermission as $ap) {
             $permission = Permission::findByName($ap);
             $employeeRole->givePermissionTo($permission);
         }
